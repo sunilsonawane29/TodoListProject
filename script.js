@@ -8,6 +8,9 @@ taskForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
     const taskText = taskInput.value.trim();
+    if (taskText === "") {
+    return;
+}
 
     const listItem = document.createElement("li");
     listItem.textContent = taskText;
