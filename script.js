@@ -13,8 +13,15 @@ taskForm.addEventListener("submit", function (event) {
 }
 
     const listItem = document.createElement("li");
-    listItem.textContent = taskText;
 
+const taskLabel = document.createElement("span");
+taskLabel.textContent = taskText;
+
+taskLabel.addEventListener("click", function () {
+    listItem.classList.toggle("completed");
+});
+
+listItem.appendChild(taskLabel);
     taskList.appendChild(listItem);
 
     taskInput.value = "";
