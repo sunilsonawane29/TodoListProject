@@ -1,3 +1,8 @@
+function updateTaskCounter() {
+    const count = taskList.children.length;
+    document.getElementById("task-counter").textContent =
+        `Total tasks: ${count}`;
+}
 console.log("To-Do List app loaded");
 
 const taskForm = document.getElementById("task-form");
@@ -22,6 +27,14 @@ taskLabel.addEventListener("click", function () {
 });
 
 listItem.appendChild(taskLabel);
+const deleteButton = document.createElement("button");
+deleteButton.textContent = "Delete";
+
+deleteButton.addEventListener("click", function () {
+    listItem.remove();
+});
+
+listItem.appendChild(deleteButton);
     taskList.appendChild(listItem);
 
     taskInput.value = "";
