@@ -100,3 +100,37 @@ button:hover {
 #task-list li button:hover {
     background-color: #b02a37;
 }
+#task-counter {
+    text-align: center;
+    color: #555;
+}
+
+#empty-message {
+    text-align: center;
+    color: #777;
+    padding: 15px;
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 12px;
+    }
+
+    .container {
+        padding: 16px;
+    }
+
+    #task-form input {
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    #task-form button {
+        width: 100%;
+    }
+
+    #task-list li {
+        gap: 8px;
+        padding: 10px;
+    }
+}
