@@ -134,3 +134,84 @@ button:hover {
         padding: 10px;
     }
 }
+
+
+#task-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+#task-input {
+    flex: 1;
+    min-width: 150px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+button {
+    padding: 9px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+#task-list {
+    padding-left: 0;
+    list-style: none;
+}
+
+#task-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin: 10px 0;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow-wrap: anywhere;
+}
+
+#task-list li span {
+    flex: 1;
+    cursor: pointer;
+}
+
+#task-list li.completed span {
+    color: gray;
+    text-decoration: line-through;
+}
+
+#clear-all-btn {
+    margin-bottom: 15px;
+}
+
+#error-message {
+    color: #c62828;
+    margin: 8px 0;
+}
+
+@media (max-width: 480px) {
+    #task-form {
+        flex-direction: column;
+    }
+
+    #task-input,
+    #task-form button {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    #task-list li {
+        padding: 9px;
+        gap: 8px;
+    }
+}
