@@ -70,11 +70,15 @@ errorMessage.textContent = "";
     listItem.appendChild(deleteButton);
     taskList.appendChild(listItem);
 
+   
     // Clear input after adding
     taskInput.value = "";
 
-    updateTaskCounter();
-});
+    // Remove any previous error message
+    errorMessage.textContent = "";
 
-// Display counts when page loads
-updateTaskCounter();
+    // Focus the input for the next task
+    taskInput.focus();
+
+    // Update task counts
+    updateTaskCounter();
