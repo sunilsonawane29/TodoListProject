@@ -1,19 +1,27 @@
 
 console.log("To-Do List app loaded");
 
-// Existing DOM element declarations
+// DOM element declarations
 const taskForm = document.getElementById("task-form");
 const taskInput = document.getElementById("task-input");
 const taskList = document.getElementById("task-list");
-const taskCounter = document.getElementById("task-counter");
 
-// Commit 11: Update the total task counter
+const taskCounter = document.getElementById("task-counter");
+const completedCounter = document.getElementById("completed-counter");
+const pendingCounter = document.getElementById("pending-counter");
+
+// Commit 11 and 12: Update task counts
 function updateTaskCounter() {
-    const count = taskList.children.length;
-    taskCounter.textContent = `Total tasks: ${count}`;
+    const totalTasks = taskList.children.length;
+    const completedTasks = taskList.querySelectorAll("li.completed").length;
+    const pendingTasks = totalTasks - completedTasks;
+
+    taskCounter.textContent = `Total tasks: ${totalTasks}`;
+    completedCounter.textContent = `Completed: ${completedTasks}`;
+    pendingCounter.textContent = `Pending: ${pendingTasks}`;
 }
 
-// Handle task submission
+// Handle adding tasks
 taskForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -24,41 +32,36 @@ taskForm.addEventListener("submit", function (event) {
         return;
     }
 
-    // Create a new task
     const listItem = document.createElement("li");
 
     const taskLabel = document.createElement("span");
     taskLabel.textContent = taskText;
 
-    // Mark a task as completed or pending
+    // Toggle completed status
     taskLabel.addEventListener("click", function () {
         listItem.classList.toggle("completed");
+        updateTaskCounter();
     });
 
     listItem.appendChild(taskLabel);
 
-    // Create a delete button
+    // Delete task
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Delete";
 
     deleteButton.addEventListener("click", function () {
         listItem.remove();
-
-        // Update counter after deletion
         updateTaskCounter();
     });
 
     listItem.appendChild(deleteButton);
-
-    // Add the task to the list
     taskList.appendChild(listItem);
 
-    // Clear the input
+    // Clear input after adding
     taskInput.value = "";
 
-    // Update counter after adding a task
     updateTaskCounter();
 });
 
-// Display the initial count when the page loads
+// Display counts when page loads
 updateTaskCounter();
