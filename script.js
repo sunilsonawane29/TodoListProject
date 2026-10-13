@@ -1,7 +1,8 @@
-```javascript
+
 console.log("To-Do List app loaded");
 
 // DOM element declarations
+const clearAllButton = document.getElementById("clear-all-btn");
 const errorMessage = document.getElementById("error-message");
 const taskForm = document.getElementById("task-form");
 const taskInput = document.getElementById("task-input");
@@ -104,4 +105,21 @@ taskForm.addEventListener("submit", function (event) {
 
 // Initialize task counters
 updateTaskCounter();
-```
+// Clear all tasks with confirmation
+clearAllButton.addEventListener("click", function () {
+    if (taskList.children.length === 0) {
+        errorMessage.textContent = "There are no tasks to clear!";
+        return;
+    }
+
+    const confirmed = confirm(
+        "Are you sure you want to delete all tasks?"
+    );
+
+    if (confirmed) {
+        taskList.innerHTML = "";
+        errorMessage.textContent = "";
+        updateTaskCounter();
+        taskInput.focus();
+    }
+});
