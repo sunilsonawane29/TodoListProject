@@ -2,6 +2,7 @@
 console.log("To-Do List app loaded");
 
 // DOM element declarations
+const errorMessage = document.getElementById("error-message");
 const taskForm = document.getElementById("task-form");
 const taskInput = document.getElementById("task-input");
 const taskList = document.getElementById("task-list");
@@ -27,10 +28,13 @@ taskForm.addEventListener("submit", function (event) {
 
     const taskText = taskInput.value.trim();
 
-    // Prevent empty tasks
-    if (taskText === "") {
-        return;
-    }
+if (taskText === "") {
+    errorMessage.textContent = "Please enter a task!";
+    taskInput.focus();
+    return;
+}
+
+errorMessage.textContent = "";
 
     const listItem = document.createElement("li");
 
