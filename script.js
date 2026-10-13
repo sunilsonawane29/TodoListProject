@@ -45,14 +45,23 @@ taskForm.addEventListener("submit", function (event) {
 
     listItem.appendChild(taskLabel);
 
-    // Delete task
+   
+    // Delete task with confirmation
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Delete";
 
     deleteButton.addEventListener("click", function () {
-        listItem.remove();
-        updateTaskCounter();
+        const confirmed = confirm(
+            "Are you sure you want to delete this task?"
+        );
+
+        if (confirmed) {
+            listItem.remove();
+            updateTaskCounter();
+        }
     });
+
+    
 
     listItem.appendChild(deleteButton);
     taskList.appendChild(listItem);
