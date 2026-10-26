@@ -1,0 +1,5 @@
+const newTask = {
+  id: crypto.randomUUID(),
+  text: inputVal,
+  completed: false
+};
